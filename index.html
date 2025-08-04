@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="./src/domso.js"></script>
+    <script>
+      // Creation
+      const heading = DOM.create("h1", {
+        text: "Hello DOMso!",
+        class: "title",
+      });
+      heading.appendTo = function (parent) {
+        parent.appendChild(this.el);
+        return this;
+      };
+      heading.appendTo(document.body);
+
+      // Selection, Styling & Events
+      const btn = DOM.select(".button");
+      btn
+        .style({
+          backgroundColor: "black",
+          color: "white",
+          borderRadius: "1rem",
+        })
+        .on("click", () => alert("Button Clicked"));
+    </script>
+  </body>
+</html>
